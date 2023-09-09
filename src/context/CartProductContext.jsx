@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
-import CartProduct from "./CartProduct"
+import React, {createContext, useContext, useState, useEffect} from "react"
 
-const FetchData = () => {
+export const CartContext = createContext(null)
+
+export const CartProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState([])
     useEffect(() => {
@@ -21,20 +22,12 @@ const FetchData = () => {
     }, [])
     console.log(products)
     console.log(loading)
+    
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    {loading ? "loading..." : products.map((product) => <CartProduct
-                        key={product.id}
-                        title={product.title}
-                        img={product.image}
-                        price={product.price} />)
-                    }
-                </div>
-            </div>
-        </>
-
+        <CartContext.Provider value ={{products,loading}}>{children}</CartContext.Provider>
     )
+
 }
-export default FetchData
+export const useCart = () => {
+ return useContext(CartContext)
+}

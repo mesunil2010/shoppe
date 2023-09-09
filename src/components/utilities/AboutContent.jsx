@@ -4,12 +4,12 @@ import React from "react"
 const AboutContent = () => {
     return (
         <div className="container">
-            <div className="d-flex justify-content-center align-items-center flex-column"
+            <div className="d-flex justify-content-center align-item-center flex-column gap-20"
                 style={{
                     height: "90%",
                     color: "black",
                     width: "100%",
-                    padding: "40px",
+                    padding: "20px",
                     textAlign: "center"
                 }}>
                 <p>Latest products</p>
