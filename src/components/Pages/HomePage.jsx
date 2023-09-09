@@ -1,18 +1,14 @@
 import React from "react"
-import FetchData from "../utilities/FetchData"
-import homePageImg from "../img/homepage.jpg"
 
+import AboutContent from "../utilities/AboutContent"
+import HomeHeader from "../utilities/HomeHeader"
+import FetchData from "../utilities/FetchData"
+import CartProduct from "../utilities/CartProduct"
 
 const HomePage = () => {
-
     return <>
-            <div className="bg-img" alt="background" style={{
-                backgroundImage: `url(${homePageImg}`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                width: "100vw",
-                height: "90vh"
-            }} />
+        <HomeHeader />
+        <AboutContent />
         <FetchData />
     </>
 

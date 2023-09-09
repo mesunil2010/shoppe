@@ -1,0 +1,27 @@
+.navbar:hover,
+.nav-link {
+    background-color: white;
+    color: black !important;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white !important;
+    font-size: 20px !important;
+}
+
+.navbar-brand {
+    font-weight: bold !important;
+}
+
+.scroll-class {
+    background-color: white;
+    color: black !important;
+    transition: 0.4s ease-in-out;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.scroll-link,
+.scroll-brand {
+    color: black !important;
+}

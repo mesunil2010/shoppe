@@ -1,0 +1,10 @@
+.card:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+    padding: 5px;
+}
+.card:hover img {
+    object-fit: cover;
+    transition: 0.4s;
+}

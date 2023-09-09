@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import CartProduct from "./CartProduct"
 
 const FetchData = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState([])
     useEffect(() => {
         try {
@@ -19,14 +19,22 @@ const FetchData = () => {
             console.log(err.message)
         }
     }, [])
+    console.log(products)
+    console.log(loading)
     return (
         <>
-            {loading ? null : products.map((product) => <CartProduct
-                key={product.id}
-                title={product.title}
-                img={product.image} />)
-            }
+            <div className="container">
+                <div className="row">
+                    {loading ? "loading..." : products.map((product) => <CartProduct
+                        key={product.id}
+                        title={product.title}
+                        img={product.image}
+                        price={product.price} />)
+                    }
+                </div>
+            </div>
         </>
+
     )
 }
 export default FetchData

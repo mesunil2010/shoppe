@@ -1,0 +1,18 @@
+html {
+    scroll-behavior: smooth;
+}
+.header-text {
+    padding: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 80vh !important;
+    flex-direction: column;
+    color: white;
+    max-width: 700px;
+}
+.explore-class {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    cursor: pointer;
+}
