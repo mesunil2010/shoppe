@@ -1,50 +1,51 @@
-import React, { useEffect, useRef, useState } from "react"
-import { NavLink } from "react-router-dom"
+import React, { useEffect, useRef } from "react"
+import { NavLink, useLocation } from "react-router-dom"
+import { useCart } from "../../context/CardContext"
+import { useHandleScroll } from "../../hooks/useHandleScroll"
 
 import "./NavBar.css"
 
 const NavBar = () => {
-    const myNav = useRef()
-    const [scroll, setScroll] = useState(false)
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.pageYOffset > 20) {
-                setScroll(true)
-            }
-            else {
-                setScroll(false)
-            }
-        }
-        window.addEventListener("scroll", handleScroll)
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
-        }
-    }, [])
+    const location = useLocation()
+    const { pathname } = location;
+    const { scroll } = useHandleScroll()
+    const inHomePage = pathname === "/"
+    const {totalProducts} = useCart()
 
+    const changeColor = () => {
+        if (scroll && inHomePage) {
+            return "text-dark"
+        }
+        else if (!inHomePage) {
+            return "text-dark"
+        }
+        else {
+            return "text-light"
+        }
+    }
 
     return (
-        <nav ref={myNav}
-            className={scroll ? "navbar sticky-top navbar-expand-lg scroll-class" :
-                "navbar sticky-top navbar-expand-lg"}>
+        <nav className={`navbar sticky-top navbar-expand-lg ${scroll || !inHomePage ? "scroll-nav" : ""} 
+        bg-${scroll && inHomePage ? "light" : "transparent"} 
+        text-${scroll && inHomePage ? "dark" : "light"}`}>
             <div className="container">
-                <div className={scroll ? "navbar-brand scroll-brand" :
-                    "navbar-brand"}>SHOPPIES</div>
+                <div className={`navbar-brand ${changeColor()}`}>SHOPPIES</div>
                 <ul className="nav justify-content-center">
                     <li className="nav-item">
                         <NavLink to="/"
-                            className={scroll ? "nav-link scroll-link" : "nav-link"}>STORE
+                            className={`nav-link ${changeColor()}`}>STORE
                         </NavLink>
                     </li>
                 </ul>
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <NavLink to="/"
-                            className={scroll ? "nav-link scroll-link" : "nav-link"}>Shoppies
+                        <NavLink to="/cart"
+                            className={`nav-link ${changeColor()}`}>MY BAG<span>({totalProducts()})</span>
                         </NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink to="/login"
-                            className={scroll ? "nav-link scroll-link" : "nav-link"}>Account
+                            className={`nav-link ${changeColor()}`}>ACCOUNT
                         </NavLink>
                     </li>
                 </ul>

@@ -1,8 +1,8 @@
-import React, {createContext, useContext, useState, useEffect} from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 
 export const CartContext = createContext(null)
 
-export const CartProvider = ({children}) => {
+export const DataProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState([])
     useEffect(() => {
@@ -13,7 +13,12 @@ export const CartProvider = ({children}) => {
                 const response = data.json();
                 return response
             }
-            getData().then((product) => setProducts(product))
+            getData().then((product) => setProducts(product.map((product) =>
+            ({
+                ...product, sizes: ["S", "M", "L", "XL"],
+                color: ["WHITE", "BLACK"],
+                quantity: [1, 2, 3, 4, 5]
+            }))))
             setLoading(false)
         }
         catch (err) {
@@ -22,12 +27,12 @@ export const CartProvider = ({children}) => {
     }, [])
     console.log(products)
     console.log(loading)
-    
+
     return (
-        <CartContext.Provider value ={{products,loading}}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ products, loading }}>{children}</CartContext.Provider>
     )
 
 }
-export const useCart = () => {
- return useContext(CartContext)
+export const useData = () => {
+    return useContext(CartContext)
 }

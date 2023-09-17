@@ -1,13 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { useCart } from "../../context/CartProductContext"
+import { useCart, useData } from "../../context/ApiContext"
 
 import "./CartProduct.css"
 
 
 const CartProduct = () => {
-    const { products,loading } = useCart()
-    console.log("product", products)
+    const { products, loading } = useData()
+
     return (
         <div className="container">
             <div className="row">
@@ -25,7 +25,7 @@ const CartProduct = () => {
                                     height: "400px"
                                 }}>
                                 <img src={product.image}
-                                    className="card-img-top" 
+                                    className="card-img-top"
                                     style={{ height: "250px" }} />
                                 <div className="card-body d-flex justify-content-center align-items-center flex-column">
                                     <div className="card-title">{product.title}</div>
