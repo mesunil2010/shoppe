@@ -1,6 +1,6 @@
 import React from "react"
 
-import homePageImg from "../img/homepage.jpg"
+import homePageImg from "./../assets/homepage.jpg"
 import "./HomeHeader.css"
 
 const HomeHeader = () => {

@@ -1,7 +1,7 @@
 import React from "react"
-import { useCart } from "../../context/CardContext"
+import { useCart } from "../context/CardContext"
 
-import IndividualProductPage from "../utilities/IndividualProductPage"
+import IndividualProductPage from "../components/IndividualProductPage"
 
 const DisplayItem = () => {
     const {modal} = useCart()

@@ -1,8 +1,8 @@
 import React from "react"
 
-import { useCart } from "../../context/CardContext"
-import ProductList from "../utilities/ProductList"
-import TotalPrice from "../utilities/TotalPrice"
+import { useCart } from "../context/CardContext"
+import ProductList from "../components/ProductList"
+import TotalPrice from "../components/TotalPrice"
 
 const SelectedItemPage = () => {
     const { card } = useCart()
