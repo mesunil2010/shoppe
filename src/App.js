@@ -1,5 +1,5 @@
 import { DataProvider } from "./context/ApiContext.jsx";
-import { CardProvider } from "./context/CardContext.jsx";
+import { CartProvider } from "./context/CardContext.jsx";
 import { AppRoutes } from "./routes.jsx";
 
 import './App.css';
@@ -7,9 +7,9 @@ import './App.css';
 function App() {
   return <>
     <DataProvider>
-      <CardProvider>
+      <CartProvider>
         <AppRoutes />
-      </CardProvider>
+      </CartProvider>
     </DataProvider>
   </>
 }
