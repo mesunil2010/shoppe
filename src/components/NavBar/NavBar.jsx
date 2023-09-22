@@ -40,7 +40,7 @@ const NavBar = () => {
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <NavLink to="/cart"
-                            className={`nav-link ${changeColor()}`}>MY BAG<span>({totalProducts()})</span>
+                            className={`nav-link ${changeColor()}`}>MY BAG<span>{totalProducts() ? `(${totalProducts()})` : ""}</span>
                         </NavLink>
                     </li>
                     <li className="nav-item">

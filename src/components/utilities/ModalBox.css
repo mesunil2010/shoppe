@@ -1,0 +1,18 @@
+.modalbox {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    position: absolute;
+    top: 35%;
+    left: 40%;
+}
+.modalbox h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

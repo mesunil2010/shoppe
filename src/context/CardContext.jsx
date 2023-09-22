@@ -7,42 +7,51 @@ export const CardProvider = ({ children }) => {
     const addToCart = (item, mySize, myColor) => {
         const selectedSize = mySize.find((size) => size.classList.contains("addborder"));
         const selectedColor = myColor.find((color) => color.classList.contains("addborder"));
-
+        const isItemInCart = card.find((card) => card.id === item.id)
+       
         if (selectedSize && selectedColor) {
-            setCard([...card, { ...item, size: selectedSize.innerHTML, color: selectedColor.innerHTML, selectedQty: 1 }])
-        }
-    }
-    const handleQty = (num, id) => {
-        const updatedCard = card.map((item) => {
-            if (item.id === id) {
-                return { ...item, selectedQty: num }
+            if (!isItemInCart) {
+                 setCard([...card, { ...item, size: selectedSize.innerHTML, color: selectedColor.innerHTML, selectedQty: 1 }])
             }
             else {
-                return item
-            }
-
-        })
-        setCard(updatedCard)
-    }
-
-    const removeFromCart = (id) => {
-        const newCard = card.filter((card) => card.id !== id)
-        setCard(newCard)
-    }
-
-    const totalIndividualPrice = (price, qty) => {
-        return price * qty
-    }
-    const totalProducts = () => {
-        if(card.length > 0) {
-            return card.length
+               alert("already added in the cart")
         }
     }
-
-
-    return <CardContext.Provider value={{ addToCart, handleQty, removeFromCart, totalIndividualPrice, totalProducts, card }}>{children}</CardContext.Provider>
-
+      else {
+        alert("please select size and color")
+      }
 }
-export const useCart = () => {
-    return useContext(CardContext)
-}
+        const handleQty = (num, id) => {
+            const updatedCard = card.map((item) => {
+                if (item.id === id) {
+                    return { ...item, selectedQty: num }
+                }
+                else {
+                    return item
+                }
+
+            })
+            setCard(updatedCard)
+        }
+
+        const removeFromCart = (id) => {
+            const newCard = card.filter((card) => card.id !== id)
+            setCard(newCard)
+        }
+
+        const totalIndividualPrice = (price, qty) => {
+            return price * qty
+        }
+        const totalProducts = () => {
+            if (card.length > 0) {
+                return card.length
+            }
+        }
+
+
+        return <CardContext.Provider value={{ addToCart, handleQty, removeFromCart, totalIndividualPrice, totalProducts, card}}>{children}</CardContext.Provider>
+
+    }
+    export const useCart = () => {
+        return useContext(CardContext)
+    }

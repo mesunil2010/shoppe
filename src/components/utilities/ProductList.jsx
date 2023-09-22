@@ -2,9 +2,8 @@ import React from "react"
 import { useCart } from "../../context/CardContext"
 
 const ProductList = ({ title, image, qty, color, size, price, id, selectedQty }) => {
-    const { handleQty,removeFromCart,totalIndividualPrice } = useCart()
+    const { handleQty, removeFromCart, totalIndividualPrice } = useCart()
 
-    
     return (
         <div className="d-flex align-items-start justify-content-start flex-column"
             style={{ minHeight: "140px", width: "100%" }}>
@@ -25,7 +24,7 @@ const ProductList = ({ title, image, qty, color, size, price, id, selectedQty })
 
             <div className="d-flex justify-content-end align-items-start" style={{ width: "100%" }}>
                 <select value={selectedQty} onChange={(e) => handleQty(e.target.value, id)} style={{ width: "25%" }}>
-                  {qty.map((qty) => <option style={{transition: "0.2s ease"}}value={qty}>{qty}</option>)}
+                    {qty.map((qty) => <option style={{ transition: "0.2s ease" }} value={qty}>{qty}</option>)}
                 </select>
             </div>
         </div>
